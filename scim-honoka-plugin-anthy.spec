@@ -1,5 +1,5 @@
 %define version  0.9.0
-%define release  %mkrel 1
+%define release  %mkrel 2
 %define src_name honoka-plugin-anthy
 
 %define honoka_version   0.9.0
@@ -21,18 +21,17 @@ Requires:      scim-honoka-plugin-romkan    >= %{honoka_version}
 Requires:      scim-honoka-plugin-simpleprediction >= %{honoka_version}
 BuildRequires: scim-honoka-devel >= %{honoka_version}
 BuildRequires: anthy-devel >= %{anthy_version}
-BuildRequires: automake1.8
+BuildRequires: automake
 BuildRequires: libltdl-devel
 
 %description
 An Anthy input plugin for honoka.
 
-
 %prep
 %setup -q -n %{src_name}-%{version}
-cp /usr/share/automake-1.9/mkinstalldirs .
 
 %build
+autoreconf
 [[ -f configure ]] || ./bootstrap
 
 %configure2_5x
@@ -44,7 +43,7 @@ rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
 
 # remove devel files
-rm -f $RPM_BUILD_ROOT/%{_libdir}/scim-1.0/honoka/*.{a,la}
+rm -f $RPM_BUILD_ROOT/%{scim_plugins_dir}/honoka/*.{a,la}
 
 %find_lang honoka-plugin-anthy
 
@@ -55,10 +54,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %postun -p /sbin/ldconfig
 
-
 %files -f honoka-plugin-anthy.lang
 %defattr(-,root,root)
 %doc AUTHORS COPYING ChangeLog README.jp
-%{_libdir}/scim-1.0/honoka/*.so
-
-
+%{scim_plugins_dir}/honoka/*.so
