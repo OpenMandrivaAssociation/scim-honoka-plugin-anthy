@@ -13,7 +13,6 @@ Group:      System/Internationalization
 License:    GPL
 URL:        http://nop.net-p.org/modules/pukiwiki/index.php?%5B%5Bhonoka%5D%5D
 Source0:    http://nop.net-p.org/files/honoka/%{src_name}-%{version}.tar.bz2
-BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}-root
 Requires:      anthy >= %{anthy_version}
 Requires:      scim-honoka-plugin-ascii     >= %{honoka_version}
 Requires:      scim-honoka-plugin-kanainput >= %{honoka_version}
