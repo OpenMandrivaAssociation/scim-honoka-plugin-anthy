@@ -1,5 +1,5 @@
 %define version  0.9.0
-%define release  %mkrel 4
+%define release  %mkrel 5
 %define src_name honoka-plugin-anthy
 
 %define honoka_version   0.9.0
